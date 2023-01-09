@@ -23,7 +23,11 @@ const TodoItem = ({ id, todo, complete }) => {
         checked={complete}
         onChange={toggleTodo}
       />
-      <label className="todo-item" onClick={toggleTodo}>
+      <label
+        className="todo-item"
+        onClick={toggleTodo}
+        style={{ textDecoration: complete ? "line-through" : "none" }}
+      >
         {todo}
       </label>
       <button type="button" onClick={deleteItem} className="btn">
