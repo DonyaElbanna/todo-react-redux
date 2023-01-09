@@ -1,6 +1,18 @@
+# Todos and Goals simple app
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Description
+
+- A very simple todos app to practise redux with react.
+
+- The app contains multiple action creators and 2 reducer functions for the todos and goals.
+
+- The use can add, remove and toggle a todo item.
+
+- The user can add or remove goals.
 
 ## Available Scripts
 
