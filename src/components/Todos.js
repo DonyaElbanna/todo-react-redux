@@ -15,6 +15,8 @@ const Todos = ({ loading }) => {
     dispatch(asyncAddTodo(input, () => setInput("")));
   };
 
+  let unfinishedTodosN = todos.filter((todo) => todo.complete === false).length;
+
   return (
     <div>
       <h2>Todos</h2>
@@ -43,6 +45,12 @@ const Todos = ({ loading }) => {
               />
             ))}
       </fieldset>
+      <br />
+      {loading ? "" : todos.length === 0 ? "" : unfinishedTodosN === 0 ? (
+        <div>Nothing left to do!</div>
+      ) : (
+        <div>Unfinished todos: {unfinishedTodosN}</div>
+      )}
     </div>
   );
 };
