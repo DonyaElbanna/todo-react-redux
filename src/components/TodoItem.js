@@ -2,8 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { asyncToggleTodo, asyncRemoveTodo } from "../actions/todos";
 import "../App.css";
-// import API from "goals-todos-api";
-// import { connect } from 'react-redux'
 
 const TodoItem = ({ id, name, complete, todo }) => {
   const dispatch = useDispatch();

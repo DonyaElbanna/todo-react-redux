@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { asyncRemoveGoal } from "../actions/goals";
 import "../App.css";
-// import API from "goals-todos-api";
 
 const GoalItem = ({ id, name, goal }) => {
   const dispatch = useDispatch();

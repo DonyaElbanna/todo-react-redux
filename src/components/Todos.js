@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { asyncAddTodo } from "../actions/todos";
 import { useSelector, useDispatch } from "react-redux";
 import TodoItem from "./TodoItem";
-// import { connect } from "react-redux";
 
 const Todos = ({ loading }) => {
   const todos = useSelector((state) => state.todos);

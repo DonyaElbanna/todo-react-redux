@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { asyncAddGoal } from "../actions/goals";
 import { useSelector, useDispatch } from "react-redux";
 import GoalItem from "./GoalItem";
-// import API from "goals-todos-api";
 
 const Goals = ({ loading }) => {
   const goals = useSelector((state) => state.goals);
