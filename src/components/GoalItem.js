@@ -1,13 +1,19 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeGoalAction } from "../actions/goals";
+import { addGoal, removeGoal } from "../actions/goals";
 import "../App.css";
+import API from "goals-todos-api";
 
 const TodoItem = ({ id, goal, complete }) => {
   const dispatch = useDispatch();
 
   const deleteItem = () => {
-    dispatch(removeGoalAction(id));
+    dispatch(removeGoal(id));
+
+    return API.deleteGoal(id).catch(() => {
+      dispatch(addGoal({ id: id, name: goal }));
+      alert("An error occurred, try again.");
+    });
   };
 
   return (

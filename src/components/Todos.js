@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-import { addTodoAction } from "../actions/todos";
+import { addTodo } from "../actions/todos";
 import { useSelector, useDispatch } from "react-redux";
 import TodoItem from "./TodoItem";
+// import { connect } from "react-redux";
+import API from "goals-todos-api";
 
-const Todos = () => {
+const Todos = ({ loading }) => {
   const todos = useSelector((state) => state.todos);
-  function generateId() {
-    return (
-      Math.random().toString(36).substring(2) +
-      new Date().getTime().toString(36)
-    );
-  }
 
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
@@ -18,20 +14,19 @@ const Todos = () => {
   const addItem = (e) => {
     e.preventDefault();
 
-    dispatch(
-      addTodoAction({
-        id: generateId(),
-        todo: input,
-        complete: false,
+    return API.saveTodo(input)
+      .then((todo) => {
+        dispatch(addTodo(todo));
+        setInput("");
       })
-    );
-    setInput("");
+      .catch(() => alert("An error occured, try again."));
   };
 
   return (
     <div>
       <h2>Todos</h2>
       <input
+        className="input"
         type="text"
         placeholder="Add a todo"
         value={input}
@@ -43,14 +38,16 @@ const Todos = () => {
 
       <fieldset>
         <legend>Todos List</legend>
-        {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            id={todo.id}
-            todo={todo.todo}
-            complete={todo.complete}
-          />
-        ))}
+        {loading
+          ? "Loading..."
+          : todos.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                id={todo.id}
+                todo={todo.name}
+                complete={todo.complete}
+              />
+            ))}
       </fieldset>
     </div>
   );

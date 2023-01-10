@@ -1,18 +1,29 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { toggleTodoAction, removeTodoAction } from "../actions/todos";
-import { removeGoalAction } from "../actions/goals";
+import { addTodo, toggleTodo, removeTodo } from "../actions/todos";
 import "../App.css";
+import API from "goals-todos-api";
+// import { connect } from 'react-redux'
 
 const TodoItem = ({ id, todo, complete }) => {
   const dispatch = useDispatch();
 
-  const toggleTodo = () => {
-    dispatch(toggleTodoAction(id));
+  const toggleItem = () => {
+    dispatch(toggleTodo(id));
+
+    return API.saveTodoToggle(id).catch(() => {
+      dispatch(toggleTodo(id));
+      alert("An error occurred, try again.");
+    });
   };
 
   const deleteItem = () => {
-    dispatch(removeTodoAction(id)) && dispatch(removeGoalAction(id));
+    dispatch(removeTodo(id));
+
+    return API.deleteTodo(id).catch(() => {
+      dispatch(addTodo({ id: id, name: todo, complete: complete }));
+      alert("An error occurred, try again.");
+    });
   };
 
   return (
@@ -21,12 +32,13 @@ const TodoItem = ({ id, todo, complete }) => {
         className="todo-item"
         type="checkbox"
         checked={complete}
-        onChange={toggleTodo}
+        onChange={toggleItem}
+        id={todo}
       />
       <label
         className="todo-item"
-        onClick={toggleTodo}
         style={{ textDecoration: complete ? "line-through" : "none" }}
+        htmlFor={todo}
       >
         {todo}
       </label>

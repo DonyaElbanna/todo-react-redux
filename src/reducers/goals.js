@@ -1,4 +1,5 @@
 import { ADD_GOAL, REMOVE_GOAL } from "../actions/goals";
+import { RECEIVE_DATA } from "../actions/shared";
 
 export default function goals(state = [], action) {
   switch (action.type) {
@@ -6,6 +7,8 @@ export default function goals(state = [], action) {
       return state.concat([action.goal]);
     case REMOVE_GOAL:
       return state.filter((todo) => todo.id !== action.id);
+    case RECEIVE_DATA:
+      return action.goals;
     default:
       return state;
   }

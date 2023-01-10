@@ -24,8 +24,24 @@ ul {
 .btn {
   margin-left: 10px;
   cursor: pointer;
+  /* height: 24px; */
 }
 
 .todo-item {
   cursor: pointer;
+}
+/* 
+.input {
+  height: 24px;
+} */
+
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .input, .btn {
+    font-size: 1rem;
+  }
 }
