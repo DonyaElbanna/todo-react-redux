@@ -2,7 +2,7 @@ import "./App.css";
 import Goals from "./components/Goals";
 import Todos from "./components/Todos";
 import { useSelector } from "react-redux";
-import API from "goals-todos-api";
+// import API from "goals-todos-api";
 import { asyncReceiveData } from "./actions/shared";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -13,9 +13,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    Promise.all([API.fetchTodos(), API.fetchGoals()]).then(([todos, goals]) => {
-      dispatch(asyncReceiveData(todos, goals));
-    });
+    dispatch(asyncReceiveData());
   }, [dispatch]);
 
   return (

@@ -1,29 +1,24 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addGoal, removeGoal } from "../actions/goals";
+import { asyncRemoveGoal } from "../actions/goals";
 import "../App.css";
-import API from "goals-todos-api";
+// import API from "goals-todos-api";
 
-const TodoItem = ({ id, goal, complete }) => {
+const GoalItem = ({ id, name, goal }) => {
   const dispatch = useDispatch();
 
   const deleteItem = () => {
-    dispatch(removeGoal(id));
-
-    return API.deleteGoal(id).catch(() => {
-      dispatch(addGoal({ id: id, name: goal }));
-      alert("An error occurred, try again.");
-    });
+    dispatch(asyncRemoveGoal(goal));
   };
 
   return (
     <div>
-      {goal}
-      <button type="button" onClick={deleteItem} className="btn">
+      {name}
+      <button type="button" onClick={deleteItem} className="delete btn">
         x
       </button>
     </div>
   );
 };
 
-export default TodoItem;
+export default GoalItem;

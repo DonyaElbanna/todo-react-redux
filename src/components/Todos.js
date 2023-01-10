@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { addTodo } from "../actions/todos";
+import { asyncAddTodo } from "../actions/todos";
 import { useSelector, useDispatch } from "react-redux";
 import TodoItem from "./TodoItem";
 // import { connect } from "react-redux";
-import API from "goals-todos-api";
 
 const Todos = ({ loading }) => {
   const todos = useSelector((state) => state.todos);
@@ -14,12 +13,7 @@ const Todos = ({ loading }) => {
   const addItem = (e) => {
     e.preventDefault();
 
-    return API.saveTodo(input)
-      .then((todo) => {
-        dispatch(addTodo(todo));
-        setInput("");
-      })
-      .catch(() => alert("An error occured, try again."));
+    dispatch(asyncAddTodo(input, () => setInput("")));
   };
 
   return (
@@ -44,8 +38,9 @@ const Todos = ({ loading }) => {
               <TodoItem
                 key={todo.id}
                 id={todo.id}
-                todo={todo.name}
+                name={todo.name}
                 complete={todo.complete}
+                todo={todo}
               />
             ))}
       </fieldset>

@@ -1,29 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addTodo, toggleTodo, removeTodo } from "../actions/todos";
+import { asyncToggleTodo, asyncRemoveTodo } from "../actions/todos";
 import "../App.css";
-import API from "goals-todos-api";
+// import API from "goals-todos-api";
 // import { connect } from 'react-redux'
 
-const TodoItem = ({ id, todo, complete }) => {
+const TodoItem = ({ id, name, complete, todo }) => {
   const dispatch = useDispatch();
-
   const toggleItem = () => {
-    dispatch(toggleTodo(id));
-
-    return API.saveTodoToggle(id).catch(() => {
-      dispatch(toggleTodo(id));
-      alert("An error occurred, try again.");
-    });
+    dispatch(asyncToggleTodo(id));
   };
 
   const deleteItem = () => {
-    dispatch(removeTodo(id));
-
-    return API.deleteTodo(id).catch(() => {
-      dispatch(addTodo({ id: id, name: todo, complete: complete }));
-      alert("An error occurred, try again.");
-    });
+    dispatch(asyncRemoveTodo(todo));
   };
 
   return (
@@ -33,16 +22,16 @@ const TodoItem = ({ id, todo, complete }) => {
         type="checkbox"
         checked={complete}
         onChange={toggleItem}
-        id={todo}
+        id={name}
       />
       <label
         className="todo-item"
         style={{ textDecoration: complete ? "line-through" : "none" }}
-        htmlFor={todo}
+        htmlFor={name}
       >
-        {todo}
+        {name}
       </label>
-      <button type="button" onClick={deleteItem} className="btn">
+      <button type="button" onClick={deleteItem} className="delete btn">
         x
       </button>
     </div>

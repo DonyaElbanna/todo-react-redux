@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { addGoal } from "../actions/goals";
+import { asyncAddGoal } from "../actions/goals";
 import { useSelector, useDispatch } from "react-redux";
 import GoalItem from "./GoalItem";
-import API from "goals-todos-api";
+// import API from "goals-todos-api";
 
 const Goals = ({ loading }) => {
   const goals = useSelector((state) => state.goals);
@@ -13,12 +13,7 @@ const Goals = ({ loading }) => {
   const addItem = (e) => {
     e.preventDefault();
 
-    return API.saveGoal(input)
-      .then((goal) => {
-        dispatch(addGoal(goal));
-        setInput("");
-      })
-      .catch(() => alert("An error occured, try again."));
+    dispatch(asyncAddGoal(input, () => setInput("")));
   };
 
   return (
@@ -40,7 +35,12 @@ const Goals = ({ loading }) => {
         {loading
           ? "Loading..."
           : goals.map((goal) => (
-              <GoalItem key={goal.id} id={goal.id} goal={goal.name} />
+              <GoalItem
+                key={goal.id}
+                id={goal.id}
+                name={goal.name}
+                goal={goal}
+              />
             ))}
       </fieldset>
     </div>
