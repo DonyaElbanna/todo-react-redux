@@ -14,6 +14,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - The user can add or remove goals.
 
+## Technologies used
+
+- [React](https://reactjs.org/)
+- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [React-Redux](https://react-redux.js.org/)
+- [Redux](https://redux.js.org/)
+
 ## Available Scripts
 
 In the project directory, you can run:

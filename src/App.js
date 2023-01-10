@@ -1,10 +1,8 @@
 import "./App.css";
 import Goals from "./components/Goals";
 import Todos from "./components/Todos";
-import { useSelector } from "react-redux";
-// import API from "goals-todos-api";
+import { useSelector, useDispatch } from "react-redux";
 import { asyncReceiveData } from "./actions/shared";
-import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
 function App() {
