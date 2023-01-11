@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { asyncRemoveGoal } from "../actions/goals";
-import "../App.css";
+import { List, Button, Icon } from "semantic-ui-react";
 
 const GoalItem = ({ id, name, goal }) => {
   const dispatch = useDispatch();
@@ -11,12 +11,16 @@ const GoalItem = ({ id, name, goal }) => {
   };
 
   return (
-    <div>
+    <List>
+      <Icon name="angellist" style={{ fontSize: "1.3rem" }} />
       {name}
-      <button type="button" onClick={deleteItem} className="delete btn">
-        x
-      </button>
-    </div>
+      <Button animated="fade" onClick={deleteItem}>
+        <Button.Content hidden>Delete</Button.Content>
+        <Button.Content visible>
+          <Icon name="delete" />
+        </Button.Content>
+      </Button>
+    </List>
   );
 };
 

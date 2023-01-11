@@ -4,6 +4,7 @@ import Todos from "./components/Todos";
 import { useSelector, useDispatch } from "react-redux";
 import { asyncReceiveData } from "./actions/shared";
 import { useEffect } from "react";
+import { Divider, Grid, Segment, Icon } from "semantic-ui-react";
 
 function App() {
   const state = useSelector((state) => state);
@@ -15,12 +16,21 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div className="app">
       <h1>Todos & Goals</h1>
-      <div className="container">
-        <Todos todos={state.todos} loading={state.loading} />
-        <Goals goals={state.goals} loading={state.loading} />
-      </div>
+      <Segment>
+        <Grid columns={2} relaxed="very" stackable>
+          <Grid.Column>
+            <Todos todos={state.todos} loading={state.loading} />
+          </Grid.Column>
+          <Grid.Column>
+            <Goals goals={state.goals} loading={state.loading} />
+          </Grid.Column>
+        </Grid>
+        <Divider vertical style={{ color: "#9e9fea" }}>
+          <Icon name="bullseye" />
+        </Divider>
+      </Segment>
     </div>
   );
 }

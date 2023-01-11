@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { asyncToggleTodo, asyncRemoveTodo } from "../actions/todos";
-import "../App.css";
+import { Checkbox, Button, Icon } from "semantic-ui-react";
 
 const TodoItem = ({ id, name, complete, todo }) => {
   const dispatch = useDispatch();
@@ -15,23 +15,13 @@ const TodoItem = ({ id, name, complete, todo }) => {
 
   return (
     <div>
-      <input
-        className="todo-item"
-        type="checkbox"
-        checked={complete}
-        onChange={toggleItem}
-        id={name}
-      />
-      <label
-        className="todo-item"
-        style={{ textDecoration: complete ? "line-through" : "none" }}
-        htmlFor={name}
-      >
-        {name}
-      </label>
-      <button type="button" onClick={deleteItem} className="delete btn">
-        x
-      </button>
+      <Checkbox label={name} checked={complete} onChange={toggleItem} />
+      <Button animated="fade" onClick={deleteItem}>
+        <Button.Content hidden>Delete</Button.Content>
+        <Button.Content visible>
+          <Icon name="delete" />
+        </Button.Content>
+      </Button>
     </div>
   );
 };

@@ -6,9 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Description
 
-- A very simple todos app to practise redux with react.
-
-- The app contains multiple action creators and 2 reducer functions for the todos and goals.
+- A very simple responsive todos app to practise redux and thunk with react.
 
 - The use can add, remove and toggle a todo item.
 
@@ -20,6 +18,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 - [React-Redux](https://react-redux.js.org/)
 - [Redux](https://redux.js.org/)
+- [Redux-Thunk](https://github.com/reduxjs/redux-thunk)
+- [Semantic UI React](https://react.semantic-ui.com/)
+
+## Demo
+
+![Demo](./public/assets/demo.png)
 
 ## Available Scripts
 

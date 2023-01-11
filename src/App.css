@@ -1,53 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo&family=Moon+Dance&display=swap");
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Cairo", sans-serif;
 }
 
-.container {
-  display: flex;
-  justify-content: space-around;
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-image: url("../public/assets/bkg.jpg");
+  background-size: cover;
+  background-position: center, center;
+}
+
+.ui.segment {
+  background-color: transparent;
+}
+.app {
+  padding: 1% 2%;
+}
+.ui.segment {
+  border: none;
+  box-shadow: none;
+  margin: 2%;
+}
+.ui.loading.form {
+  padding: 30px;
+}
+.ui.loading.form:before {
+  background: none;
+}
+
+.ui.loading.form:after {
+  border-color: #9e1d9f rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1);
 }
 
 h1,
 h2,
 legend {
   text-align: center;
+  color: #5c007a;
+  font-family: "Moon Dance", cursive;
+}
+
+h1 {
+  font-size: 46px;
+  margin-bottom: 0px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+legend {
+  font-size: 30px;
+  font-weight: bolder;
+  margin-bottom: 10px;
 }
 
 fieldset {
   margin-top: 20px;
+  border-radius: 6px;
+}
+
+.ui.checkbox {
+  font-size: 17px;
 }
 
 ul {
   margin: 0;
 }
 
-.btn {
-  margin-left: 10px;
-  cursor: pointer;
-  /* height: 24px; */
+.ui.animated.button {
+  margin: 7px 20px;
 }
 
-.todo-item {
-  cursor: pointer;
+.ui.list {
+  font-size: 17px;
+  margin: 0;
 }
-/* 
-.input {
-  height: 24px;
-} */
 
-@media only screen and (max-width: 600px) {
-  .container {
-    flex-direction: column;
-    text-align: center;
-    font-size: 1.2rem;
-  }
-  .input, .btn {
-    font-size: 1.3rem;
-  }
+.column {
+  text-align: center;
+}
 
-  .delete {
-    border-radius: 15px;
-    padding: 0px 6px;
-    margin: 3px 10px;
+fieldset {
+  border-color: #d7d9ff52;
+}
+
+.checked label {
+  text-decoration: line-through;
+}
+.ui.checked.checkbox label::after {
+  color: #5c007a !important;
+}
+
+.todos-left {
+  font-size: 20px;
+  color: #2e0050;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.vertical.divider {
+    display: none;
+  }
+  body {
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .ui.grid > .stackable.stackable.row > .column,
+  .ui.stackable.grid > .column.grid > .column,
+  .ui.stackable.grid > .column.row > .column,
+  .ui.stackable.grid > .column:not(.row),
+  .ui.stackable.grid > .row > .column,
+  .ui.stackable.grid > .row > .wide.column,
+  .ui.stackable.grid > .wide.column {
+    padding: 1rem 1rem 2rem 1rem !important;
   }
 }
