@@ -20,6 +20,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 - [React-Redux](https://react-redux.js.org/)
 - [Redux](https://redux.js.org/)
+- [Redux-Thunk](https://github.com/reduxjs/redux-thunk)
 
 ## Available Scripts
 
